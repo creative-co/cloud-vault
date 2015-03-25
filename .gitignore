@@ -13,3 +13,4 @@
 /tmp
 .idea
 .DS_Store
+.ruby-version
