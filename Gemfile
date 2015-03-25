@@ -28,6 +28,8 @@ source 'https://rails-assets.org' do
 end
 
 gem 'active_model_serializers'
+gem 'slim-rails'
+gem 'angular-rails-templates'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
