@@ -1,0 +1,7 @@
+h1 Summaries#index
+p Find me in ap/views/summaries/index.html.slim
+
+-# This list needs to be rendered the "Angular" way to authorize through Keybase.io
+ul ng-init="summaries=[{title: 'First Summary'}, {title: 'Second Summary'}, {title: 'Third Summary'}]"
+  li ng-repeat='summary in summaries'
+    strong ng-bind="summary.title"
