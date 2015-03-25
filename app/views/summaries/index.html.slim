@@ -1,7 +1,20 @@
 h1 Summaries#index
 p Find me in ap/views/summaries/index.html.slim
 
--# This list needs to be rendered the "Angular" way to authorize through Keybase.io
+hr
+
+p
+  | Below is Keybase login form. We should display it in a large popup
+
+div ng-init='user = {}'
+  input type='text' ng-model='user.login'
+  input type='text' ng-model='user.passphrase'
+  button Login
+
+hr
+
+p This list needs to be rendered the "Angular" way after we login into Keybase
+
 ul ng-init="summaries=[{title: 'First Summary'}, {title: 'Second Summary'}, {title: 'Third Summary'}]"
   li ng-repeat='summary in summaries'
     strong ng-bind="summary.title"
