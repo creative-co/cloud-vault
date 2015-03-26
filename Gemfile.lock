@@ -65,6 +65,8 @@ GEM
       rake
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    gpgme (2.0.8)
+      mini_portile (>= 0.5.0)
     i18n (0.7.0)
     json (1.8.2)
     keybase-core (0.1.7)
@@ -196,6 +198,7 @@ DEPENDENCIES
   active_model_serializers
   angular-rails-templates
   decent_exposure
+  gpgme
   keybase-core
   pg
   pry

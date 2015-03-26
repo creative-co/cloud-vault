@@ -34,6 +34,7 @@ gem 'slim-rails'
 gem 'angular-rails-templates'
 gem 'decent_exposure'
 gem 'keybase-core'
+gem 'gpgme'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
