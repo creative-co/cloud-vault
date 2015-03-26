@@ -24,7 +24,7 @@ gem 'sprockets-es6'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-angular'
+  gem 'rails-assets-angular2'
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
 end

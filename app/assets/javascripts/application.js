@@ -11,6 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require angular
+//= require angular2
 //= require kbpgp
 //= require_tree .
