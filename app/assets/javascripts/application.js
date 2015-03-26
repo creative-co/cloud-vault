@@ -13,4 +13,4 @@
 //= require jquery
 //= require angular2
 //= require kbpgp
-//= require_tree .
+//= require_tree ./pages
