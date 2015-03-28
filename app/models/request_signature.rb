@@ -11,6 +11,8 @@ class RequestSignature
   end
 
   def validate!
+    do_validate!
+  rescue Invalid
     import_key
     do_validate!
   end
@@ -48,7 +50,7 @@ class RequestSignature
 
   def import_key
     open("https://keybase.io/#{@kb_login}/key.asc") do |f|
-      IO.popen("gpg -q --import", 'w') {|gpg| gpg.write(f.read)}
+      IO.popen("gpg -q --import", 'w') { |gpg| gpg.write(f.read) }
     end
   end
 
