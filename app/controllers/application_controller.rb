@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def current_user
     User.new(kb_login: 'guest')
   end
+
+  private
+
+  def request_signature
+    @request_signature ||= RequestSignature.new(headers['X-Kb-Signature'] || raise(ArgumentError, 'X-Kb-Signature header expected'))
+  end
 end

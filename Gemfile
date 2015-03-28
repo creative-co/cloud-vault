@@ -36,6 +36,7 @@ gem 'angular-rails-templates'
 gem 'decent_exposure'
 gem 'keybase-core'
 gem 'gpgme'
+gem 'timecop'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
