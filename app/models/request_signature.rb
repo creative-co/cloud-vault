@@ -1,5 +1,5 @@
 class RequestSignature
-  delegate :kb_login, :timestamp, :csrf_token, to: :message
+  attr_reader :public_key_id, :timestamp, :csrf_token
 
   # caught in controller to prevent bad requests
   Invalid = Class.new(StandardError)
@@ -17,29 +17,16 @@ class RequestSignature
 
   def do_validate!
     crypto = GPGME::Crypto.new
-    crypto.verify(@signature) { |sig| raise Invalid unless sig.valid? }
+    @csrf_token = crypto.verify(@signature) do |sig|
+      raise Invalid unless sig.valid?
+      @public_key_id = sig.from.split.first  # e.g. => "E9DB2AB3C0AC4A98 Vladimir Yartsev <vovayartsev@gmail.com>"
+      @timestamp = sig.timestamp
+    end.to_s.strip
   end
 
   def import_key
     open("https://keybase.io/#{kb_login}/key.asc") do |f|
       GPGME::Key.import(f)
     end
-  end
-
-  attr_reader :message
-
-  class Message < Struct.new(:kb_login, :timestamp, :csrf_token)
-    def initialize(signature)
-      login, ts, token = signature.each_line.map(&:strip).drop_while(&:present?)[1].split(' / ')
-      raise Invalid, "not a csrf_token: #{token}" unless token.is_a?(String)
-      timestamp = Time.parse(ts)
-      super(login, timestamp, token)
-    rescue StandardError => e
-      raise Invalid, "#{e.class.name}: #{e.message}"
-    end
-  end
-
-  def message
-    @message ||= Message.new(@signature)
   end
 end
