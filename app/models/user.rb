@@ -1,3 +1,3 @@
-class User < Struct.new(:kb_login)
+class User < ActiveRecord::Base
 
 end

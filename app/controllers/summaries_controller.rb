@@ -1,8 +1,7 @@
 class SummariesController < ApplicationController
+  respond_to :json
+
   def index
-    respond_to do |format|
-      format.json { render json: Summary.all_for_user(current_user) }
-      format.html
-    end
+    respond_with Summary.all_for_user(current_user)
   end
 end
