@@ -44,10 +44,6 @@ class RequestSignature
   #   end.to_s.strip
   # end
 
-  def do_validate
-
-  end
-
   def import_key
     open("https://keybase.io/#{@kb_login}/key.asc") do |f|
       IO.popen("gpg -q --import", 'w') { |gpg| gpg.write(f.read) }
@@ -55,5 +51,4 @@ class RequestSignature
   end
 
   # GPGME::Key.import(f)
-
 end
