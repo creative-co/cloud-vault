@@ -11,6 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require angular2
 //= require kbpgp
+
+//= require underscore
+//= require angular
+//= require angular-app
+//= require_tree ./services
+//= require_tree ./controllers
+
 //= require_tree ./pages

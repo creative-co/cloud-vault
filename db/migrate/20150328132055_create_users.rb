@@ -1,9 +1,8 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :public_key_id
+      t.string :public_key_id, null: false, unique: true
       t.timestamps null: false
     end
-    add_index :users, [:public_key_id], unique: true
   end
 end

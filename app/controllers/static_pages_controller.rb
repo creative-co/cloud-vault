@@ -1,9 +1,8 @@
 class StaticPagesController < ApplicationController
-  def index
-
+  def landing
+    render layout: 'landing'
   end
 
   def myvault
-
   end
 end

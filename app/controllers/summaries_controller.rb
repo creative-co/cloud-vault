@@ -1,4 +1,4 @@
-class SummariesController < ApplicationController
+class SummariesController < SecureController
   respond_to :json
 
   def index

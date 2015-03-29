@@ -10,7 +10,6 @@ gem 'sass'
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-gem 'sprockets-es6'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -27,8 +26,11 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
+  gem 'rails-assets-underscore'
 end
 
+gem 'autoprefixer-rails'
+gem 'ngannotate-rails', github: 'kikonen/ngannotate-rails'
 gem 'responders', '~> 2.0'
 gem 'active_model_serializers'
 gem 'slim-rails'

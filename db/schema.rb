@@ -17,11 +17,9 @@ ActiveRecord::Schema.define(version: 20150328132055) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "public_key_id"
+    t.string   "public_key_id", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
-
-  add_index "users", ["public_key_id"], name: "index_users_on_public_key_id", unique: true, using: :btree
 
 end

@@ -1,19 +1,20 @@
-p Find me in app/views/static_pages/myvault.html.slim
+div ng-controller='MyvaultCtrl'
+  p Find me in app/views/static_pages/application.html.slim
 
-hr
+  hr
 
-p
-  | Below is Keybase login form. We should display it in a large popup
+  p
+    | Below is Keybase login form. We should display it in a large popup
 
-div ng-init='user = {}'
-  input type='text' ng-model='user.login'
-  input type='text' ng-model='user.passphrase'
-  button Login
+  div ng-init='user = {}'
+    input type='text' ng-model='user.login'
+    input type='text' ng-model='user.passphrase'
+    button ng-click='onLogin()' Login
 
-hr
+  hr
 
-p This list needs to be rendered the "Angular" way after we login into Keybase
+  p This list needs to be rendered the "Angular" way after we login into Keybase
 
-ul ng-init="summaries=[{title: 'First Summary'}, {title: 'Second Summary'}, {title: 'Third Summary'}]"
-  li ng-repeat='summary in summaries'
-    strong ng-bind="summary.title"
+  ul
+    li ng-repeat='summary in summaries'
+      strong ng-bind="summary.title"
