@@ -1,6 +1,6 @@
 angular.module('myvault').service('SummaryService', function ($http, CryptoService) {
   this.query = function () {
-    $http.get('/summaries', {
+    return $http.get('/summaries', {
       headers: _.extend($http.defaults.headers, extraHeaders())
     })
   }
