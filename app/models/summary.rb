@@ -1,4 +1,4 @@
-class Summary < Struct.new(:id, :title)
+class Summary < Struct.new(:project_id, :title)
   def self.all_for_user(user)
     return [
         new(1, "First project"),

@@ -1,3 +1,3 @@
 class SummarySerializer < ActiveModel::Serializer
-  attributes :id, :title
+  attributes :project_id, :title
 end
