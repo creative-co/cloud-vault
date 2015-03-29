@@ -1,9 +1,9 @@
-angular.module('myvault').controller('MyvaultCtrl', function (SummaryService) {
+angular.module('myvault').controller('MyvaultCtrl', function (BackendService) {
   var self = this;
   this.user = {}
 
   this.onLogin = function () {
-    SummaryService.query().success(function (data) {
+    BackendService.summaries().success(function (data) {
       self.summaries = data.summaries;
     })
   }
