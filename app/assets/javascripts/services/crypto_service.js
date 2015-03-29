@@ -1,4 +1,4 @@
-angular.module('myvault').service('CryptoService', function () {
+angular.module('vault').service('CryptoService', function () {
   this.login = function (kbLogin, kbPassword) {
     console.log("Logon attempt...")
   }

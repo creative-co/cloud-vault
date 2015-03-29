@@ -1,4 +1,4 @@
-angular.module('myvault').service('BackendService', function ($http, CryptoService) {
+angular.module('vault').service('BackendService', function ($http, CryptoService) {
   this.summaries = function () {
     return $http.get('/summaries', {headers: headers()})
   }

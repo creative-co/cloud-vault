@@ -3,6 +3,6 @@ class StaticPagesController < ApplicationController
     render layout: 'landing'
   end
 
-  def myvault
+  def vault
   end
 end

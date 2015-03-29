@@ -1,4 +1,4 @@
-angular.module('myvault').controller('MyvaultCtrl', function (BackendService) {
+angular.module('vault').controller('vaultCtrl', function (BackendService) {
   var self = this;
   this.user = {}
 

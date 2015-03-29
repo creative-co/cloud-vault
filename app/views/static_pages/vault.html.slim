@@ -1,4 +1,4 @@
-div ng-controller='MyvaultCtrl as myvaultCtrl'
+div ng-controller='vaultCtrl as vaultCtrl'
   p Find me in app/views/static_pages/application.html.slim
 
   hr
@@ -7,15 +7,15 @@ div ng-controller='MyvaultCtrl as myvaultCtrl'
     | Below is Keybase login form. We should display it in a large popup
 
   div
-    input type='text' ng-model='myvaultCtrl.user.login'
-    input type='text' ng-model='myvaultCtrl.user.passphrase'
-    button ng-click='myvaultCtrl.onLogin()' Login
+    input type='text' ng-model='vaultCtrl.user.login'
+    input type='text' ng-model='vaultCtrl.user.passphrase'
+    button ng-click='vaultCtrl.onLogin()' Login
 
   hr
 
   p This list needs to be rendered the "Angular" way after we login into Keybase
 
   ul
-    li ng-repeat='summary in myvaultCtrl.summaries'
+    li ng-repeat='summary in vaultCtrl.summaries'
       strong ng-bind="summary.title"
 

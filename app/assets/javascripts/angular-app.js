@@ -1,4 +1,4 @@
-var app = angular.module('myvault', []);
+var app = angular.module('vault', []);
 
 app.run(function ($http) {
   $http.defaults.headers.post['HTTP_ACCEPT'] = 'application/json'
