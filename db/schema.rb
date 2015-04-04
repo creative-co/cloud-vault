@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328132055) do
+ActiveRecord::Schema.define(version: 20150329144337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "passphrases", force: :cascade do |t|
+    t.text     "phrase",             null: false
+    t.integer  "user_id",            null: false
+    t.integer  "project_version_id", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "passphrases", ["user_id", "project_version_id"], name: "index_passphrases_on_user_id_and_project_version_id", using: :btree
+
+  create_table "project_versions", force: :cascade do |t|
+    t.integer  "project_id",     null: false
+    t.integer  "version_number", null: false
+    t.integer  "author_id",      null: false
+    t.text     "content",        null: false
+    t.text     "team",           null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "project_versions", ["project_id", "version_number"], name: "index_project_versions_on_project_id_and_version_number", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "version_number"
+    t.string   "title",          null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "public_key_id", null: false

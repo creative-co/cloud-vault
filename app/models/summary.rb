@@ -1,10 +1,14 @@
 class Summary < Struct.new(:project_id, :title)
+  def initialize(project)
+    super(project.id, project.title)
+  end
+
   def self.all_for_user(user)
-    return [
-        new(1, "First project"),
-        new(2, "Second project"),
-        new(3, "Private passwords")
-    ]
+    user_versions = ProjectVersion.joins(:passphrases).
+        where('passphrases.user_id = ?', user.id).
+        where('project_versions.project_id = projects.id')
+
+    Project.where(user_versions.exists).map(&method(:new)) # TODO: ACL
   end
 
   alias :read_attribute_for_serialization :send

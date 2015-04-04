@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'projections/show'
+
   # You can have the root of your site routed with "root"
   root 'static_pages#landing'
   get 'static_pages/vault', as: 'vault'

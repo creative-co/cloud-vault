@@ -3,7 +3,7 @@ class SecureController < ApplicationController
   before_filter :validate_request_signature
 
   def current_user
-    User.where(public_key_id: request_signature.public_key_id)
+    User.where(public_key_id: request_signature.public_key_id).first_or_create!
   end
 
   rescue_from RequestSignature::Invalid, with: :render_not_authorized
