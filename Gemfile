@@ -27,6 +27,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
+  gem 'rails-assets-bootstrap-sass'
 end
 
 gem 'autoprefixer-rails'

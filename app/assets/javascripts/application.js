@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require kbpgp
-
 //= require underscore
+
 //= require angular
 //= require angular-app
 //= require_tree ./services
