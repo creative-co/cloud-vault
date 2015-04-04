@@ -8,7 +8,10 @@ class Summary < Struct.new(:project_id, :title)
         where('passphrases.user_id = ?', user.id).
         where('project_versions.project_id = projects.id')
 
-    Project.where(user_versions.exists).map(&method(:new)) # TODO: ACL
+    Project.
+        all.
+        # where(user_versions.exists).
+        map(&method(:new)) # TODO: ACL
   end
 
   alias :read_attribute_for_serialization :send

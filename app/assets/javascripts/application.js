@@ -13,6 +13,7 @@
 //= require jquery
 //= require kbpgp
 //= require underscore
+//= require bootstrap-sass
 
 //= require angular
 //= require angular-app

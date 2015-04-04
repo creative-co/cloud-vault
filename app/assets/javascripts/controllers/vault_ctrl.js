@@ -1,10 +1,8 @@
-angular.module('vault').controller('VaultCtrl', function (BackendService) {
+angular.module('vault').controller('VaultCtrl', function ($scope) {
   var self = this;
-  this.user = {}
+  this.view = "login_form";
 
-  this.onLogin = function () {
-    BackendService.summaries().success(function (data) {
-      self.summaries = data.summaries;
-    })
-  }
+  $scope.$on("login", function() {
+    self.view = 'summaries';
+  })
 });

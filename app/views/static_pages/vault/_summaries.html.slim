@@ -1,0 +1,4 @@
+div ng-controller="SummariesCtrl as sum"
+  ul
+    li ng-repeat='summary in sum.summaries'
+      strong ng-bind="summary.title"
