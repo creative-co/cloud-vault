@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post 'keybase_proxy/getsalt'
+  post 'keybase_proxy/login'
+  post 'keybase_proxy/key_fetch'
+
   get 'projections/show'
 
   # You can have the root of your site routed with "root"

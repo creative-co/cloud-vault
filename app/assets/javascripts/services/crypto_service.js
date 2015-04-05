@@ -1,6 +1,13 @@
-angular.module('vault').service('CryptoService', function () {
-  this.login = function (kbLogin, kbPassword) {
-    console.log("Logon attempt...")
+angular.module('vault').service('CryptoService', function (KeybaseLoginService) {
+  var me = null;
+
+  this.login = function (credentials) {
+    return KeybaseLoginService
+      .login(credentials.kbLogin, credentials.kbPassword)
+      .then(function (userInfo) {
+        console.log(userInfo);
+        me = userInfo;
+      })
   }
 
   this.requestHeaders = function () {
@@ -13,7 +20,7 @@ angular.module('vault').service('CryptoService', function () {
   /* PRIVATE */
 
   kbLogin = function () {
-    return 'vovayartsev';
+    return me && me.basics.username;
   }
 
   requestSignature = function () {

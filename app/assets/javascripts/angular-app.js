@@ -1,5 +1,12 @@
 var app = angular.module('vault', []);
 
+//app.config(function ($sceDelegateProvider) {
+//  $sceDelegateProvider.resourceUrlWhitelist([
+//    'self',
+//    'https://keybase.io/_/modal/**'
+//  ]);
+//});
+
 app.run(function ($http) {
   $http.defaults.headers.post['HTTP_ACCEPT'] = 'application/json'
   $http.defaults.headers.post['CONTENT_TYPE'] = 'application/json'

@@ -28,6 +28,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
   gem 'rails-assets-bootstrap-sass'
+  gem 'rails-assets-jsSHA'
 end
 
 gem 'autoprefixer-rails'
@@ -40,6 +41,9 @@ gem 'decent_exposure'
 gem 'keybase-core'
 gem 'gpgme'
 gem 'timecop'
+gem 'rest-client'
+# gem 'rack-proxy'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

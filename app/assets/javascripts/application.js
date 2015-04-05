@@ -14,6 +14,8 @@
 //= require kbpgp
 //= require underscore
 //= require bootstrap-sass
+//= require scrypt
+//= require jsSHA
 
 //= require angular
 //= require angular-app

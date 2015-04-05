@@ -35,20 +35,9 @@ class RequestSignature
     @csrf_token = @signature.each_line.to_a[3].strip
   end
 
-  # def do_validate!
-  #   crypto = GPGME::Crypto.new
-  #   @csrf_token = crypto.verify(@signature) do |sig|
-  #     raise Invalid unless sig.valid?
-  #     @public_key_id = sig.from.split.first # e.g. => "E9DB2AB3C0AC4A98 Vladimir Yartsev <vovayartsev@gmail.com>"
-  #     @timestamp = sig.timestamp
-  #   end.to_s.strip
-  # end
-
   def import_key
     open("https://keybase.io/#{@kb_login}/key.asc") do |f|
       IO.popen("gpg -q --import", 'w') { |gpg| gpg.write(f.read) }
     end
   end
-
-  # GPGME::Key.import(f)
 end
