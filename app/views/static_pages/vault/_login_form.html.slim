@@ -1,5 +1,5 @@
 .row ng-controller="LoginCtrl as ctrl"
-  form.form-signin.col-md-4.col-md-offset-4 name="login" ng-submit='ctrl.onLogin()'
+  form.form-signin.col-md-4.col-md-offset-4 name="login" submit-with-progress='ctrl.onLogin()'
     h2.form-signin-heading Please sign in
 
     label.sr-only[for="inputEmail"] Email address
@@ -12,8 +12,11 @@
 
     .alert.alert-danger(ng-show="ctrl.errorMessage" ng-bind="ctrl.errorMessage")
 
-    button.btn.btn-lg.btn-primary.btn-block type="submit"
-      | Sign in
+    .progress.hidden-unless-in-progress
+      .progress-bar.progress-bar-striped.active[role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"]
+        span.sr-only Logging in...
+
+    button.btn.btn-lg.btn-primary.btn-block type="submit" Sign in
 
 
 /#modal-dialog-login.modal-dialog
