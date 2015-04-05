@@ -17,6 +17,10 @@ angular.module('vault').service('CryptoService', function (KeybaseLoginService) 
     }
   }
 
+  this.me = function() {
+    return me;
+  }
+
   /* PRIVATE */
 
   kbLogin = function () {
