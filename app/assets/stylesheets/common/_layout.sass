@@ -1,0 +1,13 @@
+html, body
+  height: 100%
+
+.container-window
+  min-height: 100%
+  padding-top: $header-height
+  &:after
+    display: block
+    height: $footer-height + 50px
+    content: ""
+  & + .footer
+    margin-top: $footer-height * -1
+

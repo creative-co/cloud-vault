@@ -11,14 +11,19 @@ html[lang="en"]
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body.ng-cloak ng-app="vault"
-    nav.navbar.navbar-inverse.navbar-fixed-top ng-controller="NavbarCtrl as nav"
-      .navbar-left
-        img.avatar ng-src="{{nav.avatarUrl}}"
-      form.navbar-form.text-center role="search"
-        input.form-control ng-model="nav.search"
+    .container-window
+      .header ng-controller="NavbarCtrl as nav"
+        .container
+          img.header_avatar ng-src="{{nav.avatarUrl}}"
 
-    #main.container
-      = yield
+          form.form-search role="search"
+            input.form-control ng-model="nav.search" placeholder="Search..."
+            button.form-search_submit.glyphicon.glyphicon-search
+
+
+
+      #main.container
+        = yield
 
     footer.footer
       .container
