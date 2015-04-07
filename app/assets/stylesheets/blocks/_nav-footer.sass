@@ -1,14 +1,17 @@
 .nav-footer
+  margin-top: 21px
   text-align: center
   white-space: nowrap
   &_item
     display: inline-block
-    margin: 0 10px
+    padding: 0 20px
     position: relative
+    &:first-child:before
+      display: none
     &:before
-      margin-right: 10px
+      height: 20px
       position: absolute
       top: 0
-      right: 100%
+      left: 0
       border-left: 1px solid #999
       content: ""
