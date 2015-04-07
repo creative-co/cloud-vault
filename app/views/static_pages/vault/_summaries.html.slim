@@ -1,4 +1,19 @@
 div ng-controller="SummariesCtrl as sum"
-  ul
+  button.btn.btn-success Add project
+
+  ul.list-unstyled
+    li.summary
+      .summary_favorite
+      .summary_title Project Name
+      .summary_info.glyphicon-time 03/01/15
+      .summary_info.glyphicon-user 12
+    li.summary
+      .summary_favorite
+      .summary_title Project Name
+      .summary_info.glyphicon-time 03/01/15
+      .summary_info.glyphicon-user 12
+
+
+  //ul
     li ng-repeat='summary in sum.summaries'
       strong ng-bind="summary.title"

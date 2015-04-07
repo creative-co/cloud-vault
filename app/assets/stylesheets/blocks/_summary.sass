@@ -1,0 +1,47 @@
+.summary
+  padding: 12px 20px
+  background: #f9f9f9
+  +clearfix
+  margin-top: 10px
+
+
+  &_favorite
+    float: left
+    margin: 0 10px 0 0
+    font: 20px/1 'Glyphicons Halflings'
+    opacity: 0.7
+    cursor: pointer
+    &:before
+      content: "\e007"
+    &.-active
+      opacity: 1
+      color: green
+      &:before
+        content: "\e006"
+    &:hover
+      opacity: 1
+
+  &_title
+    font-size: 20px
+    line-height: 1
+    float: left
+    cursor: pointer
+    border-bottom: 1px solid transparent
+    &:hover
+      color: $link-color
+      border-bottom-color: $link-color
+  &_info
+    float: right
+    margin-top: 3px
+    margin-left: 25px
+    padding-left: 5px
+    position: relative
+    &:before
+      position: absolute
+      top: 0
+      right: 100%
+      font-family: 'Glyphicons Halflings'
+  &_description
+    border-top: 1px solid #ddd
+    padding-top: 10px
+    margin-top: 5px
