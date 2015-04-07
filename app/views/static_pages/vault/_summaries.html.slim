@@ -1,5 +1,11 @@
 div ng-controller="SummariesCtrl as sum"
-  button.btn.btn-success Add project
+
+  //ul.list-unstyled
+    li.summary ng-repeat='summary in sum.summaries'
+      .summary_favorite ng-class="{'-active': summary.favorite}"
+      .summary_title ng-bind="summary.title"
+      .summary_info.glyphicon-time ng-bind="summary.time"
+      .summary_info.glyphicon-user ng-bind="summary.members"
 
   ul.list-unstyled
     li.summary
@@ -13,7 +19,7 @@ div ng-controller="SummariesCtrl as sum"
       .summary_info.glyphicon-time 03/01/15
       .summary_info.glyphicon-user 12
 
+  .control-add-project
+    button.btn.btn-success.control-add-project_link
 
-  //ul
-    li ng-repeat='summary in sum.summaries'
-      strong ng-bind="summary.title"
+
