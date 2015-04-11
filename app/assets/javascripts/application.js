@@ -16,6 +16,7 @@
 //= require bootstrap-sass
 //= require scrypt
 //= require jsSHA
+//= require js-base64
 
 //= require angular
 //= require angular-app

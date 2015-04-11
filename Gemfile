@@ -29,6 +29,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
   gem 'rails-assets-bootstrap-sass'
   gem 'rails-assets-jsSHA'
+  gem 'rails-assets-js-base64'
 end
 
 gem 'autoprefixer-rails'

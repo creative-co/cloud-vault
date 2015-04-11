@@ -7,8 +7,8 @@ angular.module('vault').controller('LoginCtrl', function ($rootScope, CryptoServ
     self.errorMessage = null;
     return CryptoService.login(self.credentials).then(function () {
       $rootScope.$broadcast('login');
-    }, function () {
-      self.errorMessage = 'Login failed'
+    }, function (err) {
+      self.errorMessage = 'Login failed: ' + err;
     })
   }
 });

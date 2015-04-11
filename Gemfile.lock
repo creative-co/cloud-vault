@@ -120,6 +120,7 @@ GEM
     rails-assets-bootstrap-sass (3.3.4)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.3)
+    rails-assets-js-base64 (2.1.7)
     rails-assets-jsSHA (1.6.0)
     rails-assets-kbpgp (2.0.9)
     rails-assets-underscore (1.8.3)
@@ -235,6 +236,7 @@ DEPENDENCIES
   rails-assets-angular!
   rails-assets-bootstrap-sass!
   rails-assets-jquery!
+  rails-assets-js-base64!
   rails-assets-jsSHA!
   rails-assets-kbpgp!
   rails-assets-underscore!
