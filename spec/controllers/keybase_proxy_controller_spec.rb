@@ -16,11 +16,11 @@ RSpec.describe KeybaseProxyController, type: :controller do
     end
   end
 
-  describe "GET #key_fetch" do
-    it "returns http success" do
-      get :key_fetch
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "GET #key_fetch" do
+  #   it "returns http success" do
+  #     get :key_fetch
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
 
 end
