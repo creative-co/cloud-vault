@@ -1,28 +1,21 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The secure content (e.g. your passwords) are stored in PG database within the Rails app.
+The client-side (JS single-page app) authorizes itself with Keybase and decrypts the secure content right in the browser.
 
-Things you may want to cover:
+=== Local setup 
+* MacOS or Linux
+* Ruby 2.1.x
+* PG >= 9.3
 
-* Ruby version
+No ENV needs to be set.
+Use seeds.rb for DB initialization. 
 
-* System dependencies
+=== Running tests
 
-* Configuration
+```bash
+  bundle exec rspec
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+=== Hosting
+Demo currently hosted at https://cloud-vault.herokuapp.com
