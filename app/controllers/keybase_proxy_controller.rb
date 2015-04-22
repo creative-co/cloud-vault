@@ -11,9 +11,9 @@ class KeybaseProxyController < ApplicationController
     do_proxy(:post, LOGIN_URL)
   end
 
-  def key_fetch
-    do_proxy(:get, KEY_FETCH_URL)
-  end
+  # def key_fetch
+  #   do_proxy(:get, KEY_FETCH_URL)
+  # end
 
   private
 
