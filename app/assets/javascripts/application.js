@@ -13,7 +13,7 @@
 //= require jquery
 //= require kbpgp
 //= require underscore
-//= require bootstrap-sass
+//= require bootstrap-sprockets
 //= require scrypt
 //= require jsSHA
 //= require js-base64

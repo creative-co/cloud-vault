@@ -1,3 +1,4 @@
+
 ruby '2.2.1'
 source 'https://rubygems.org'
 
@@ -27,11 +28,12 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
-  gem 'rails-assets-bootstrap-sass'
+  # gem 'rails-assets-bootstrap-sass'
   gem 'rails-assets-jsSHA'
   gem 'rails-assets-js-base64'
 end
 
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'ngannotate-rails', github: 'kikonen/ngannotate-rails'
 gem 'responders', '~> 2.0'
