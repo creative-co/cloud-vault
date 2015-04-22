@@ -13,9 +13,7 @@ Use seeds.rb for DB initialization.
 
 === Running tests
 
-```bash
-  bundle exec rspec
-```
+     bundle exec rspec
 
 === Hosting
 Demo currently hosted at https://cloud-vault.herokuapp.com
