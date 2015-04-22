@@ -1,7 +1,7 @@
 == README
 
 The secure content (e.g. your passwords) are stored PGP-encrypted in PG database within the Rails app.
-The client-side (JS single-page app) authorizes itself with Keybase and uses decrypts the secure content right in the browser.
+The client-side (JS single-page app) authorizes itself with Keybase and uses KBPGP to decrypts the secure content right in the browser.
 
 === Basic usage scenario
 
