@@ -1,6 +1,5 @@
 div ng-controller="SummariesCtrl as sum"
-
-  //ul.list-unstyled
+  ul.list-unstyled
     li.summary ng-repeat='summary in sum.summaries'
       .summary_favorite ng-class="{'-active': summary.favorite}"
       .summary_title ng-bind="summary.title"
@@ -10,16 +9,16 @@ div ng-controller="SummariesCtrl as sum"
   ul.list-unstyled
     li.summary
       .summary_favorite
-      .summary_title Project Name
-      .summary_info.glyphicon-time 03/01/15
-      .summary_info.glyphicon-user 12
+      .summary_title Travel tripper
+      .summary_info.glyphicon-time 01/03/15
+      .summary_info.glyphicon-user 2
     li.summary
       .summary_favorite
-      .summary_title Project Name
-      .summary_info.glyphicon-time 03/01/15
-      .summary_info.glyphicon-user 12
+      .summary_title Picwell
+      .summary_info.glyphicon-time 03/03/15
+      .summary_info.glyphicon-user 10
 
   .control-add-project
-    button.btn.btn-success.control-add-project_link
+    button.btn.btn-success Add new project
 
 
