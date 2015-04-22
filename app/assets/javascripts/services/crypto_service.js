@@ -1,9 +1,11 @@
 angular.module('vault').service('CryptoService', function ($q, MetaService, KeybaseLoginService) {
-    var me = null, publicKey = null, cachedRequestSignature = null;
+    var me = null,
+        publicKey = null,
+        cachedRequestSignature = null;
 
     this.login = function (credentials) {
-      return KeybaseLoginService
-        .login(credentials.kbLogin, credentials.kbPassword).then(saveMe)
+      return KeybaseLoginService.login(credentials.kbLogin, credentials.kbPassword)
+        .then(saveMe)
         .then(injectPublicKey).then(loadKey).then(savePublicKey)
         //.then(initKeyManager(credentials.kbPassword))
         //.then(injectPrivateKey).then(loadKey).then(unlockPrivateKey(credentials.kbPassword)).then(savePrivateKey)
