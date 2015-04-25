@@ -1,6 +1,6 @@
-class Summary < Struct.new(:project_id, :title)
+class Summary < Struct.new(:project_id, :title, :updated_at, :team_size)
   def initialize(project)
-    super(project.id, project.title)
+    super(project.id, project.title, project.updated_at, rand(10)) # TODO: remove rand
   end
 
   def self.all_for_user(user)
