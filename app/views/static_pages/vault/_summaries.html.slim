@@ -3,7 +3,7 @@ div ng-controller="SummariesCtrl as sum"
   ul.list-unstyled
     li.summary ng-repeat="summary in sum.summaries"
       .summary_favorite
-      .summary_title ng-bind="summary.title"
+      .summary_title ng-bind="summary.title" ng-click="sum.showProjection(summary.project_id)"
       .summary_info.glyphicon-time ng-bind="summary.last_changed_at"
       .summary_info.glyphicon-user ng-bind="summary.team_size"
 
