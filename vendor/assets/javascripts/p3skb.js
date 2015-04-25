@@ -7,7 +7,7 @@
   iced = require('iced-runtime');
   __iced_k = __iced_k_noop = function() {};
 
-  angular.module('vault').factory("P3SKB", function($q) {
+  angular.module('vault').factory("P3SKB", ['$q', function($q) {
     var assert, createHash, decrypt, encode, pack, unpack, _ref;
     _ref = require('purepack'), unpack = _ref.unpack, pack = _ref.pack;
     createHash = require('crypto').createHash;
@@ -66,7 +66,7 @@
         });
       }
     };
-  });
+  }]);
 
 }).call(this);
 

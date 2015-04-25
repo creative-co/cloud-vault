@@ -5,7 +5,6 @@ angular.module('vault').controller('LoginCtrl', function ($rootScope, CryptoServ
   this.progress = 0;
 
   $rootScope.$on('progress', function(_, data) {
-    debugger;
     self.progress = data;
   })
 
