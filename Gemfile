@@ -28,9 +28,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
-  # gem 'rails-assets-bootstrap-sass'
   gem 'rails-assets-jsSHA'
   gem 'rails-assets-js-base64'
+  gem 'rails-assets-maxtaco--purepack'
 end
 
 gem 'bootstrap-sass'

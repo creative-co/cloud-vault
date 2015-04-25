@@ -32,7 +32,11 @@ class RequestSignature
         @public_key_id = $2
       end
     end
-    @csrf_token = @signature.each_line.to_a[3].strip
+    @csrf_token = IO.popen('gpg --decrypt 2>/dev/null', 'r+') do |gpg|
+      gpg.write(@signature)
+      gpg.close_write
+      gpg.read
+    end
   end
 
   def import_key

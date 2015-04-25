@@ -14,11 +14,12 @@ class SecureController < ApplicationController
     request_signature.validate! # may raise RequestSignature::Invalid
 
     unless valid_authenticity_token?(session, request_signature.csrf_token)
-      puts "TODO: CSRF Token: #{request_signature.csrf_token}"
-      # raise RequestSignature::Invalid
+      raise RequestSignature::Invalid
     end
 
-    puts "TODO: Timestamp: #{request_signature.timestamp}"
+    if request_signature.timestamp < 15.minutes.ago
+      raise RequestSignature::Invalid
+    end
   end
 
   private

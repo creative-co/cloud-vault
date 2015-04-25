@@ -23,5 +23,6 @@
 //= require_tree ./services
 //= require_tree ./directives
 //= require_tree ./controllers
+//= require p3skb
 
 //= require_tree ./pages
