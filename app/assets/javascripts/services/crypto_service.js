@@ -15,7 +15,7 @@ angular.module('vault').service('CryptoService', function ($rootScope, $q, $time
     // TODO: remove hardcoded username and request signature
     this.requestHeaders = function () {
       return {
-        'X-Kb-Login': 'vovayartsev', //kbLogin() ,
+        'X-Kb-Login': kbLogin(),
         'X-Kb-Signature': requestSignature()
       }
     }
@@ -26,10 +26,13 @@ angular.module('vault').service('CryptoService', function ($rootScope, $q, $time
 
     /* PRIVATE */
 
+    NOP = function () {
+    }
+
     function progress(value) {
       return function () {
         $rootScope.$broadcast('progress', value);
-        return $timeout(function() {}, 100);
+        return $timeout(NOP, 100);
       }
     }
 
