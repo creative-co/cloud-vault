@@ -1,13 +1,14 @@
-angular.module('vault').service('CryptoService', function ($q, P3SKB, MetaService, KeybaseLoginService) {
+angular.module('vault').service('CryptoService', function ($rootScope, $q, $timeout, P3SKB, MetaService, KeybaseLoginService) {
     var me = null,
       sharedKeyManager = null,
       cachedRequestSignature = null;
 
     this.login = function (credentials) {
+      progress(20)();
       return KeybaseLoginService.login(credentials.kbLogin, credentials.kbPassword)
-        .then(saveMe)
-        .then(injectPublicKey).then(loadKey).then(savePublicKey)
-        .then(injectPrivateKey(credentials.kbPassword)).then(mergePgpPrivate)
+        .then(saveMe).then(progress(50))
+        .then(injectPublicKey).then(loadKey).then(savePublicKey).then(progress(75))
+        .then(injectPrivateKey(credentials.kbPassword)).then(mergePgpPrivate).then(progress(100))
         .then(buildRequestSignature).then(saveRequestSignature)
     }
 
@@ -24,6 +25,13 @@ angular.module('vault').service('CryptoService', function ($q, P3SKB, MetaServic
     }
 
     /* PRIVATE */
+
+    function progress(value) {
+      return function () {
+        $rootScope.$broadcast('progress', value);
+        return $timeout(function() {}, 100);
+      }
+    }
 
     function saveMe(userInfo) {
       me = userInfo;

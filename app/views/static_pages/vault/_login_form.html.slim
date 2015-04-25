@@ -13,7 +13,8 @@
     .alert.alert-danger(ng-show="ctrl.errorMessage" ng-bind="ctrl.errorMessage")
 
     .progress.hidden-unless-in-progress
-      .progress-bar.progress-bar-striped.active[role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"]
+      /.progress-bar.progress-bar-striped.active[role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"]
+      .progress-bar.progress-bar-striped.active[role="progressbar" aria-valuenow="{{ctrl.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ctrl.progress}}%"]
         span.sr-only Logging in...
 
     button.btn.btn-lg.btn-primary.btn-block type="submit" Sign in

@@ -2,6 +2,12 @@ angular.module('vault').controller('LoginCtrl', function ($rootScope, CryptoServ
   var self = this;
   this.credentials = {kbLogin: "vovayartsev@gmail.com", kbPassword: ""};
   this.errorMessage = null;
+  this.progress = 0;
+
+  $rootScope.$on('progress', function(_, data) {
+    debugger;
+    self.progress = data;
+  })
 
   this.onLogin = function () {
     self.errorMessage = null;
