@@ -20,6 +20,7 @@
 
 //= require angular
 //= require angular-app
+//= require_tree ./factories
 //= require_tree ./services
 //= require_tree ./directives
 //= require_tree ./controllers

@@ -7,7 +7,7 @@
 # * passphrase: encrypted passphrase for the current user
 class Projection
   delegate :title, :version_number, to: :@project
-  delegate :content, :team, to: :@version
+  delegate :encrypted_content, :team, to: :@version
 
   def initialize(project_id, user)
     @project = Project.find(project_id)

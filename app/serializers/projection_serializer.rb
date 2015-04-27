@@ -1,3 +1,3 @@
 class ProjectionSerializer < ActiveModel::Serializer
-  attributes :project_id, :title, :version_number, :content, :team, :passphrase
+  attributes :project_id, :title, :encrypted_content, :team, :passphrase
 end

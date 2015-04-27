@@ -3,8 +3,8 @@ angular.module('vault').service('BackendService', function ($http, CryptoService
     return $http.get('/summaries', {headers: headers()});
   }
 
-  this.projection = function(id) {
-    return $http.get('/projections/' + id, {headers: headers()});
+  this.projection = function(path) {
+    return $http.get('/projections' + path, {headers: headers()});
   }
 
   function headers() {

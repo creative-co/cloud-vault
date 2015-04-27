@@ -8,6 +8,6 @@ div ng-controller="SummariesCtrl as sum"
       .summary_info.glyphicon-user ng-bind="summary.team_size"
 
   .control-add-project
-    button.btn.btn-success Add new project
+    button.btn.btn-success ng-click="sum.openProjection('new')" Add new project
 
 

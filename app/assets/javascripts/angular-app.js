@@ -7,7 +7,8 @@ var app = angular.module('vault', []);
 //  ]);
 //});
 
-app.run(function ($http, MetaService) {
+app.run(function ($location, $http, MetaService) {
+  $location.path('/');
   $http.defaults.headers.post['HTTP_ACCEPT'] = 'application/json'
   $http.defaults.headers.post['CONTENT_TYPE'] = 'application/json'
   $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest'

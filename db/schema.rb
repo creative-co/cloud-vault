@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329144337) do
+ActiveRecord::Schema.define(version: 20150426200233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20150329144337) do
   add_index "passphrases", ["user_id", "project_version_id"], name: "index_passphrases_on_user_id_and_project_version_id", using: :btree
 
   create_table "project_versions", force: :cascade do |t|
-    t.integer  "project_id",     null: false
-    t.integer  "version_number", null: false
-    t.integer  "author_id",      null: false
-    t.text     "content",        null: false
-    t.text     "team",           null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "project_id",        null: false
+    t.integer  "version_number",    null: false
+    t.integer  "author_id",         null: false
+    t.text     "encrypted_content", null: false
+    t.text     "team",              null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "project_versions", ["project_id", "version_number"], name: "index_project_versions_on_project_id_and_version_number", using: :btree
