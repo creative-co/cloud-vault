@@ -19,6 +19,7 @@
 //= require js-base64
 
 //= require angular
+//= require angular-route
 //= require angular-app
 //= require_tree ./factories
 //= require_tree ./services
