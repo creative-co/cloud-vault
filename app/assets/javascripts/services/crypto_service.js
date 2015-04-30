@@ -22,13 +22,17 @@ angular.module('vault').service('CryptoService', function ($rootScope, $q, $time
 
     this.requestHeaders = function () {
       return {
-        'X-Kb-Login': kbLogin(),
+        'X-Kb-Login': this.kbLogin(),
         'X-Kb-Signature': requestSignature
       }
     }
 
     this.me = function () {
       return me;
+    }
+
+    this.kbLogin = function () {
+      return me && me.basics.username;
     }
 
     /* PRIVATE */
@@ -45,12 +49,6 @@ angular.module('vault').service('CryptoService', function ($rootScope, $q, $time
 
     function saveMe(userInfo) {
       me = userInfo;
-      return me;
-    }
-
-    // TODO: never used?
-    kbLogin = function () {
-      return me && me.basics.username;
     }
 
     function injectPublicKey() {
