@@ -1,13 +1,12 @@
-div ng-controller="SummariesCtrl as sum"
-
+div
   ul.list-unstyled
-    li.summary ng-repeat="summary in sum.summaries"
+    li.summary ng-repeat="summary in summariesCtrl.summaries"
       .summary_favorite
-      .summary_title ng-bind="summary.title" ng-click="sum.showProjection(summary.project_id)"
+      .summary_title ng-bind="summary.title" ng-click="summariesCtrl.showProjection(summary.project_id)"
       .summary_info.glyphicon-time ng-bind="summary.last_changed_at"
       .summary_info.glyphicon-user ng-bind="summary.team_size"
 
   .control-add-project
-    button.btn.btn-success ng-click="sum.openProjection('new')" Add new project
+    button.btn.btn-success ng-click="summariesCtrl.openProjection('new')" Add new project
 
 

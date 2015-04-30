@@ -1,6 +1,6 @@
-angular.module('vault').controller('LoginCtrl', function ($rootScope, CryptoService) {
+angular.module('vault').controller('LoginCtrl', function ($rootScope, $location, CryptoService) {
   var self = this;
-  this.credentials = {kbLogin: "vovayartsev@gmail.com", kbPassword: ""};
+  this.credentials = {kbLogin: "anton.frolovsky@cloudcastlegroup.com", kbPassword: ""};
   this.errorMessage = null;
   this.progress = 0;
 
@@ -10,10 +10,13 @@ angular.module('vault').controller('LoginCtrl', function ($rootScope, CryptoServ
 
   this.onLogin = function () {
     self.errorMessage = null;
-    return CryptoService.login(self.credentials).then(function () {
-      $rootScope.$broadcast('login');
-    }, function (err) {
-      self.errorMessage = 'Login failed: ' + err;
-    })
+    return CryptoService.login(self.credentials)
+      .then(function () {
+        $rootScope.$broadcast('login');
+        $location.path('/summaries');
+      }, function (err) {
+        self.errorMessage = 'Login failed: ' + err;
+      })
   }
 });
+

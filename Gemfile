@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
+  gem 'rails-assets-angular-route'
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
