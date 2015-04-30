@@ -2,29 +2,30 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, BackendSe
   var self = this;
   self.visible = false;
 
-  $scope.$watch(pathFn, function (path) {
-    switch (path) {
-      case "":
-      case "/":
-        self.visible = false;
-        break;
+  // TODO ngRoute
+  // $scope.$watch(pathFn, function (path) {
+  //   switch (path) {
+  //     case "":
+  //     case "/":
+  //       self.visible = false;
+  //       break;
 
-      case "/new":
-        self.projection = ProjectionFactory();
-        self.visible = true;
-        break;
+  //     case "/new":
+  //       self.projection = ProjectionFactory();
+  //       self.visible = true;
+  //       break;
 
-      default:
-        BackendService.projection(path).success(function (data) {
-          self.projection = ProjectionFactory(data);
-        });
-        self.visible = true;
-    }
-  });
+  //     default:
+  //       BackendService.projection(path).success(function (data) {
+  //         self.projection = ProjectionFactory(data);
+  //       });
+  //       self.visible = true;
+  //   }
+  // });
 
-  /* PRIVATE */
+  // /* PRIVATE */
 
-  function pathFn() {
-    return $location.path();
-  }
+  // function pathFn() {
+  //   return $location.path();
+  // }
 });
