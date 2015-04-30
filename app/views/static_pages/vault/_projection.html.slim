@@ -1,6 +1,44 @@
-div#projection-overlay ng-show='overlay.visible' ng-controller="ProjectionCtrl as overlay"
+/ div#projection-overlay ng-show='overlay.visible' ng-controller="ProjectionCtrl as overlay"
 
+.panel.panel-default
+  .panel-heading
+    h2.panel-title Create new Project
+  .panel-body
+    input.form-control type="text" placeholder="Project name"
+    / TAB PANEL
+    .tabpanel role="tabpanel"
+      ul.nav.nav-tabs role="tablist"
+        li.active
+          a.nav-tabs-link aria-controls="home" role="tab1" data-toggle="tab" href="#tab1" Message
+        li
+          a.nav-tabs-link aria-controls="home" role="tab2" data-toggle="tab" href="#tab2" Team
+        li
+          a.nav-tabs-link aria-controls="home" role="tab3" data-toggle="tab" href="#tab3" History
 
+      .tab-content
+        .tab-pane.active#tab1 role="tabpanel"
+          textarea.form-control name="" cols="30" rows="10"
+        .tab-pane#tab2 role="tabpanel"
 
+          .input-group
+            input.form-control type="text" placeholder="User name, email, github..."
+            span.input-group-btn
+              button.btn.btn-default type="button" Add user
 
+          br
+
+          ul.list-group
+            li.list-group-item
+              |Anton frolovsky
+              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
+            li.list-group-item
+              |Vladimir Yartsev
+              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
+            li.list-group-item
+              |Vasia Vasia
+              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
+        .tab-pane#tab3 role="tabpanel" History log here!
+
+  .panel-footer.text-center
+    button.btn.btn-primary Create project
 

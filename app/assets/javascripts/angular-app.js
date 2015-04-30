@@ -13,6 +13,11 @@ app
         controller: 'SummariesCtrl',
         controllerAs: 'summariesCtrl'
       })
+      .when('/projections/new', {
+        templateUrl: 'projection',
+        controller: 'ProjectionCtrl',
+        controllerAs: 'projectionCtrl'
+      })
 
   })
   .run(function ($location, $http, MetaService) {
