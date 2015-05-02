@@ -13,7 +13,7 @@ app
         controller: 'SummariesCtrl',
         controllerAs: 'summariesCtrl'
       })
-      .when('/projections/new', {
+      .when('/projections/:projectionId', {
         templateUrl: 'projection',
         controller: 'ProjectionCtrl',
         controllerAs: 'projectionCtrl'

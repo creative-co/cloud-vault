@@ -1,4 +1,4 @@
-angular.module('vault').controller('SummariesCtrl', function (BackendService, $location) {
+angular.module('vault').controller('SummariesCtrl', function (BackendService) {
   var self = this;
 
   BackendService.summaries().success(function (data) {

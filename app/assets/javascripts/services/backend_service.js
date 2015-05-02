@@ -1,4 +1,4 @@
-angular.module('vault').service('BackendService', function ($http, CryptoService) {
+angular.module('vault').service('BackendService', function ($http, LoginService) {
   this.summaries = function () {
     return $http.get('/summaries', {headers: headers()});
   }
@@ -7,7 +7,11 @@ angular.module('vault').service('BackendService', function ($http, CryptoService
     return $http.get('/projections' + path, {headers: headers()});
   }
 
+  this.createProjection = function(data) {
+    return $http.post('/projections', data, {headers: headers()});
+  }
+
   function headers() {
-    return _.extend($http.defaults.headers, CryptoService.requestHeaders());
+    return _.extend($http.defaults.headers, LoginService.requestHeaders());
   }
 });

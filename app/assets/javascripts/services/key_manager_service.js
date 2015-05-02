@@ -28,5 +28,13 @@ angular.module('vault').service('KeyManagerService', function ($q) {
         })
       })
     }
+
+    this.pgpEncrypt = function (data) {
+
+    }
+
+    this.pgpDecrypt = function (armored) {
+
+    }
   }
 );

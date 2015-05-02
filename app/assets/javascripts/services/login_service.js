@@ -1,4 +1,4 @@
-angular.module('vault').service('CryptoService', function ($rootScope, $q, $timeout, P3SKB, MetaService, KeyManagerService, KeybaseLoginService) {
+angular.module('vault').service('LoginService', function ($rootScope, $q, $timeout, P3SKB, MetaService, KeyManagerService, KeybaseLoginService) {
     var me = null, requestSignature = null;
 
     this.login = function (credentials) {
