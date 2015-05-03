@@ -11,23 +11,12 @@ class RequestSignature
   end
 
   def validate!
+    # this will fetch the public key from Keybase.io unless already ached
     public_key = PublicKeysCache.fetch(@kb_login)
-    output = IO.popen("gpg --no-default-keyring --keyring #{public_key.dearmored_path} --verify 2>&1", 'r+') do |gpg|
-      gpg.write(@signature)
-      gpg.close_write
-      gpg.read
-    end
-    raise Invalid, output unless output =~ /Good signature/m
-    output.each_line do |line|
-      if line =~ /Signature made (.*) using .+ key ID [\d\w]+/
-        @timestamp = Time.parse($1)
-      end
-    end
-    @csrf_token = IO.popen("gpg --no-default-keyring --keyring #{public_key.dearmored_path} --decrypt 2>/dev/null", 'r+') do |gpg|
-      gpg.write(@signature)
-      gpg.close_write
-      gpg.read
-    end.strip
+    sig = PgpEngine.verify(@signature, public_key)
+    raise Invalid unless sig.valid?
+    @timestamp = sig.timestamp
+    @csrf_token = sig.content.strip
   end
 
 end
