@@ -40,7 +40,6 @@ gem 'ngannotate-rails', github: 'kikonen/ngannotate-rails'
 gem 'responders', '~> 2.0'
 gem 'active_model_serializers'
 gem 'slim-rails'
-gem 'angular-rails-templates'
 gem 'decent_exposure'
 gem 'keybase-core'
 gem 'gpgme'
@@ -68,5 +67,6 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails'
+  gem 'rspec-its'
 end
 

@@ -4,7 +4,7 @@ class CreateProjectVersions < ActiveRecord::Migration
       t.integer :project_id, null: false
       t.integer :version_number, null: false
       t.integer :author_id, null: false
-      t.text :content, null: false
+      t.text :encrypted_content, null: false
       t.text :team, null: false
 
       t.timestamps null: false

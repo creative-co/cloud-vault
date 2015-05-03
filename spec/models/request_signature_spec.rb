@@ -7,7 +7,7 @@ RSpec.describe RequestSignature, type: :model do
 
   it 'validates and decodes signature' do
     expect { request_signature.validate! }.not_to raise_error
-    expect(request_signature.public_key_id).to eq('C0AC4A98')
+    expect(request_signature.kb_login).to eq('vovayartsev')
     expect(request_signature.timestamp.min).to eq(33)
     expect(request_signature.csrf_token).to eq('1234567890abcdefghijklmnopqrstuvwxyz')
   end

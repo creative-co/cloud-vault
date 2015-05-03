@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Projection do
-  let(:user) { User.create(public_key_id: 'ABCDEFGH') }
+  let(:user) { User.create(kb_login: 'vovayartsev') }
   let(:project) { Project.create!(version_number: 1, title: 'First Project') }
 
   ENCRYPTED_CONTENT = '123123123'
