@@ -1,6 +1,6 @@
 angular.module('vault').controller('LoginCtrl', function ($rootScope, $location, LoginService) {
   var self = this;
-  this.credentials = {kbLogin: "anton.frolovsky@cloudcastlegroup.com", kbPassword: ""};
+  this.credentials = {kbLogin: "vovayartsev@gmail.com", kbPassword: ""};
   this.errorMessage = null;
   this.progress = 0;
 

@@ -29,8 +29,12 @@ angular.module('vault').service('KeyManagerService', function ($q) {
       })
     }
 
-    this.pgpEncrypt = function (data) {
+    this.pgpEncryptForMyself = function (data) {
 
+    }
+
+    this.pgpEncryptForKey = function (data, publicKey) {
+      debugger
     }
 
     this.pgpDecrypt = function (armored) {

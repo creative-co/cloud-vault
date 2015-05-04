@@ -1,7 +1,7 @@
 class KeybaseProxyController < ApplicationController
   LOGIN_URL = "https://keybase.io/_/api/1.0/login.json";
   GETSALT_URL = "https://keybase.io/_/api/1.0/getsalt.json";
-  KEY_FETCH_URL = "https://keybase.io/_/api/1.0/getsalt.json";
+  # KEY_FETCH_URL = "https://keybase.io/_/api/1.0/getsalt.json";
 
   def getsalt
     do_proxy(:post, GETSALT_URL)

@@ -1,9 +1,9 @@
 angular.module('vault').factory('ProjectionFactory', function () {
   function Projection(data) {
     this.projectId = data.project_id;
-    this.title = data.title || 'New Vault';
-    this.decryptedContent = "";
-    this.team = data.team || [];
+    this.title = data.title;
+    this.decryptedContent = data.decryptedContent || "";
+    this.team = data.team;
     this.teamChanged = false;
   }
 

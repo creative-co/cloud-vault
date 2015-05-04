@@ -1,24 +1,53 @@
-angular.module('vault').service('CodecService', function ($q, KeyManagerService) {
+angular.module('vault').service('CodecService', function ($q, $http, KeyManagerService, TriplesecService) {
   this.encrypt = function (projection) {
     return $q.when(projection.toParams())
       .then(encryptContent)
-      .then(signTeamIfPresent) // team attribute may be ommitted if no changes
+      .then(encryptPassphrase)
+      .then(signTeamIfChanged) // team attribute may be ommitted if no changes
       .then(sanitizeSensitiveData);
   }
 
 
   /* PRIVATE */
 
-  function encryptContent(object) {
+  function encryptContent(proj) {
+    return TriplesecService.genpw().
+      then(function (pw) {
+        proj.passphrase = pw;
+        return TriplesecService.encrypt(proj.decryptedContent, pw);
+      }).then(function (encrypted) {
+        proj.encryptedContent = encrypted;
+        return proj;
+      });
+  }
+
+  function encryptPassphrase(proj) {
+    proj.passphrases = {};
+    var promises = _.map(proj.team, function (memberKbLogin) {
+      return fetchPublicKeyFor(memberKbLogin)
+        .then(function (memberKey) {
+          return KeyManagerService.encryptForKey(proj.passphrase, memberKey)
+        }).then(function (encryptedPassphrase) {
+          proj.passphrases[memberKbLogin] = encryptedPassphrase;
+        });
+    });
+    return $q.all(promises).then(function () {
+      proj.passphrase = null; // security measure
+      return proj;
+    })
+  }
+
+
+  function signTeamIfChanged(proj) {
 
   }
 
-  function signTeamIfPresent(object) {
-
-  }
-
-  function sanitizeSensitiveData(object) {
+  function sanitizeSensitiveData(proj) {
     return {hello: 123};
+  }
+
+  function fetchPublicKeyFor(kbLogin) {
+    return $http.get("https://keybase.io/" + kbLogin + "/key.asc")
   }
 
 

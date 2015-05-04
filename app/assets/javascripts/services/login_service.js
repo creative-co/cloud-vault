@@ -37,13 +37,10 @@ angular.module('vault').service('LoginService', function ($rootScope, $q, $timeo
 
     /* PRIVATE */
 
-    NOP = function () {
-    }
-
     function progress(value) {
       return function () {
         $rootScope.$broadcast('progress', value);
-        return $timeout(NOP, 100);
+        return $timeout(_.noop, 100);
       }
     }
 

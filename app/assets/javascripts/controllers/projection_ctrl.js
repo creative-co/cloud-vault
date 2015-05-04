@@ -1,8 +1,11 @@
-angular.module('vault').controller('ProjectionCtrl', function ($routeParams, BackendService, ProjectionFactory, CodecService) {
+angular.module('vault').controller('ProjectionCtrl', function ($routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
   var self = this;
 
   if ($routeParams.projectionId == 'new') {
-    self.projection = ProjectionFactory();
+    self.projection = ProjectionFactory({
+      title: 'New Project',
+      team: [LoginService.kbLogin()]
+    });
   } else {
     // TODO: progress indication
     // TODO: load
