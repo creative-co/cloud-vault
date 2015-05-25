@@ -8,7 +8,11 @@ angular.module('vault').factory('ProjectionFactory', function () {
   }
 
   Projection.prototype.toParams = function() {
-    return _.clone(this);
+    return {
+      title: this.title,
+      encrypted_content: this.encryptedContent,
+      signed_team: this.signedTeam
+    }
   }
 
   return function (data) {

@@ -1,10 +1,10 @@
 angular.module('vault').service('CodecService', function ($q, $http, KeyManagerService, TriplesecService) {
   this.encrypt = function (projection) {
-    return $q.when(projection.toParams())
+    return $q.when(_.clone(projection))
       .then(encryptContent)
       .then(encryptPassphrase)
-      .then(signTeamIfChanged) // team attribute may be ommitted if no changes
-      .then(sanitizeSensitiveData);
+      .then(signTeam)
+      .then(parameterizeAndSanitize);
   }
 
 
@@ -38,7 +38,7 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
     })
   }
 
-  function signTeamIfChanged(proj) {
+  function signTeam(proj) {
     var teamStr = proj.team.join("\n");
     return KeyManagerService.pgpSign(teamStr).then(function (signedMsg) {
       proj.signedTeam = signedMsg;
@@ -46,8 +46,8 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
     })
   }
 
-  function sanitizeSensitiveData(proj) {
-    return proj;
+  function parameterizeAndSanitize(proj) {
+    return proj.toParams();
   }
 
   function fetchPublicKeyFor(kbLogin) {
@@ -55,9 +55,4 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
       $.get("https://keybase.io/" + kbLogin + "/key.asc", resolve)
     })
   }
-
-
-//this.encryptedContent = data.encrypted_content;
-//this.passphrase = data.passphrase;
-
 });
