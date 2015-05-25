@@ -2,13 +2,9 @@ angular.module('vault').service('KeyManagerService', function ($q) {
     var sharedKeyManager = null;
 
     this.loadPublicKey = function (inKey) {
-      return $q(function (resolve, reject) {
-        kbpgp.KeyManager.import_from_armored_pgp({armored: inKey}, function (err, keyManager) {
-          err ? reject("loadKey: " + err) : resolve(keyManager);
-        })
-      }).then(function (mgr) {
+      return doImportArmored(inKey).then(function (mgr) {
         sharedKeyManager = mgr;
-      })
+      });
     }
 
     this.mergePgpPrivate = function (privateKey) {
@@ -30,15 +26,47 @@ angular.module('vault').service('KeyManagerService', function ($q) {
     }
 
     this.pgpEncryptForMyself = function (data) {
-
+      return doEncrypt(data, sharedKeyManager);
     }
 
     this.pgpEncryptForKey = function (data, publicKey) {
-      debugger
+      return doImportArmored(publicKey).then(function (manager) {
+        return doEncrypt(data, manager);
+      })
     }
 
     this.pgpDecrypt = function (armored) {
+      return doDecrypt(armored, sharedKeyManager);
+    }
 
+    // PRIVATE FUNCTIONS
+
+    function doImportArmored(inKey) {
+      return $q(function (resolve, reject) {
+        kbpgp.KeyManager.import_from_armored_pgp({armored: inKey}, function (err, keyManager) {
+          err ? reject("loadKey: " + err) : resolve(keyManager);
+        })
+      });
+    }
+
+    function doEncrypt(data, manager) {
+      return $q(function (resolve, reject) {
+        var params = {msg: data, encrypt_for: manager};
+        kbpgp.box(params, function (err, resultString) {
+          err ? reject(err) : resolve(resultString);
+        });
+      });
+    }
+
+    function doDecrypt(data, manager) {
+      return $q(function (resolve, reject) {
+        var ring = new kbpgp.keyring.KeyRing;
+        ring.add_key_manager(manager);
+        var params = {keyfetch: ring, armored: data};
+        kbpgp.unbox(params, function (err, literals) {
+          err ? reject(err) : resolve(literals[0].toString());
+        });
+      });
     }
   }
 );

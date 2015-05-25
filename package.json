@@ -1,0 +1,29 @@
+{
+  "name": "travel_tripper",
+  "version": "0.0.0",
+  "description": "This project releases UI and RESTful client for RezTrip 3 engine.",
+  "main": "karma.conf.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": "~1.3.12",
+    "jasmine-core": "~2.2.0",
+    "karma": "~0.12.31",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-jasmine": "~0.1.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TravelTripperLLC/travel_tripper.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/TravelTripperLLC/travel_tripper/issues"
+  }
+}

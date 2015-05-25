@@ -26,7 +26,7 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
     var promises = _.map(proj.team, function (memberKbLogin) {
       return fetchPublicKeyFor(memberKbLogin)
         .then(function (memberKey) {
-          return KeyManagerService.encryptForKey(proj.passphrase, memberKey)
+          return KeyManagerService.pgpEncryptForKey(proj.passphrase, memberKey)
         }).then(function (encryptedPassphrase) {
           proj.passphrases[memberKbLogin] = encryptedPassphrase;
         });
@@ -47,7 +47,9 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
   }
 
   function fetchPublicKeyFor(kbLogin) {
-    return $http.get("https://keybase.io/" + kbLogin + "/key.asc")
+    return $q(function (resolve, reject) {
+      $.get("https://keybase.io/" + kbLogin + "/key.asc", resolve)
+    })
   }
 
 
