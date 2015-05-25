@@ -13,12 +13,9 @@ describe("Key manager", function () {
 
   describe(".pgpEncryptForMyself --> .pgpDecrypt", function () {
     it("returns the original string", function () {
-      var promise = my.KeyManagerService.loadPublicKey(FIXTURES.demo_public_key)
+      var promise = my.initKeyManager()
         .then(function () {
-          return my.KeyManagerService.mergePgpPrivate(FIXTURES.demo_private_key);
-        })
-        .then(function () {
-          return my.KeyManagerService.pgpEncryptForMyself("Hello World");
+          return my.KeyManagerService.pgpEncryptForMyself("Hello World")
         })
         .then(function (encrypted) {
           return my.KeyManagerService.pgpDecrypt(encrypted);

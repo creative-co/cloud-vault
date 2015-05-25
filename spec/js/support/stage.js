@@ -3,13 +3,21 @@ function setStage() {
   var dependencies = arguments;
 
   beforeEach(module('vault'));
-  beforeEach(inject(function ($q, $rootScope, $injector) {
+  beforeEach(inject(function ($q, $rootScope, $injector, KeyManagerService) {
     stage.$q = $q;
     stage.$rootScope = $rootScope;
-    angular.forEach(dependencies, function(dep) {
+    stage.KeyManagerService = KeyManagerService;
+    angular.forEach(dependencies, function (dep) {
       stage[dep] = $injector.get(dep);
     });
   }));
+
+  stage.initKeyManager = function () {
+    return stage.KeyManagerService.loadPublicKey(FIXTURES.demo_public_key)
+      .then(function () {
+        return stage.KeyManagerService.mergePgpPrivate(FIXTURES.demo_private_key);
+      });
+  }
 
   stage.waitsForPromise = function (promise, callback) {
     var value, error, resolved = false;

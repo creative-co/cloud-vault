@@ -27,7 +27,8 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
       return fetchPublicKeyFor(memberKbLogin)
         .then(function (memberKey) {
           return KeyManagerService.pgpEncryptForKey(proj.passphrase, memberKey)
-        }).then(function (encryptedPassphrase) {
+        })
+        .then(function (encryptedPassphrase) {
           proj.passphrases[memberKbLogin] = encryptedPassphrase;
         });
     });
@@ -37,13 +38,12 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
     })
   }
 
-
   function signTeamIfChanged(proj) {
-
+    return proj;
   }
 
   function sanitizeSensitiveData(proj) {
-    return {hello: 123};
+    return proj;
   }
 
   function fetchPublicKeyFor(kbLogin) {
