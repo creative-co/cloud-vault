@@ -39,7 +39,11 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
   }
 
   function signTeamIfChanged(proj) {
-    return proj;
+    var teamStr = proj.team.join("\n");
+    return KeyManagerService.pgpSign(teamStr).then(function (signedMsg) {
+      proj.signedTeam = signedMsg;
+      return proj;
+    })
   }
 
   function sanitizeSensitiveData(proj) {

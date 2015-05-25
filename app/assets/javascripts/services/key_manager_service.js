@@ -16,11 +16,11 @@ angular.module('vault').service('KeyManagerService', function ($q) {
     }
 
     // this is  CSRF_TOKEN -> PGP -> BASE64
-    this.buildRequestSignature = function (csrfToken) {
-      var params = {msg: csrfToken, sign_with: sharedKeyManager};
+    this.pgpSign = function (data) {
+      var params = {msg: data, sign_with: sharedKeyManager};
       return $q(function (resolve, reject) {
-        kbpgp.box(params, function (err, result_string, result_buffer) {
-          err ? reject(err) : resolve(Base64.encode(result_string))
+        kbpgp.box(params, function (err, result_string) {
+          err ? reject(err) : resolve(result_string);
         })
       })
     }

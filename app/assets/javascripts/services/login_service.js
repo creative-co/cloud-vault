@@ -15,8 +15,7 @@ angular.module('vault').service('LoginService', function ($rootScope, $q, $timeo
         .then(KeyManagerService.mergePgpPrivate)
         .then(progress(100))
 
-        .then(injectCsrfToken)
-        .then(KeyManagerService.buildRequestSignature)
+        .then(buildRequestSignature)
         .then(saveRequestSignature)
     }
 
@@ -36,6 +35,10 @@ angular.module('vault').service('LoginService', function ($rootScope, $q, $timeo
     }
 
     /* PRIVATE */
+
+    function buildRequestSignature() {
+      return KeyManagerService.pgpSign(MetaService.csrfToken());
+    }
 
     function progress(value) {
       return function () {
@@ -58,12 +61,8 @@ angular.module('vault').service('LoginService', function ($rootScope, $q, $timeo
       }
     }
 
-    function injectCsrfToken() {
-      return MetaService.csrfToken();
-    }
-
     function saveRequestSignature(sig) {
-      requestSignature = sig;
+      requestSignature = Base64.encode(sig);
     }
   }
 )

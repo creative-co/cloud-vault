@@ -13,7 +13,7 @@ describe("CodecService", function () {
       my.waitsForPromise(promise, function (value, error) {
         expect(error).toBeUndefined();
         expect(value.encryptedContent.length).toBeGreaterThan(100);
-        expect(value.teamSigned.length).toBeGreaterThan(100);
+        //expect(value.signedTeam.length).toBeGreaterThan(100);
       })
     });
   });
