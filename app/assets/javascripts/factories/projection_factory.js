@@ -4,14 +4,14 @@ angular.module('vault').factory('ProjectionFactory', function () {
     this.title = data.title;
     this.decryptedContent = data.decryptedContent || "";
     this.team = data.team;
-    this.teamChanged = false;
   }
 
   Projection.prototype.toParams = function() {
     return {
       title: this.title,
       encrypted_content: this.encryptedContent,
-      signed_team: this.signedTeam
+      signed_team: this.signedTeam,
+      passphrases: this.passphrases
     }
   }
 

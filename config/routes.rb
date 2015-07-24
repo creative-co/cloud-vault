@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   # post 'keybase_proxy/key_fetch'
 
   resources :summaries, only: [:index]
-  resources :projections, only: [:show]
+  resources :projections, only: [:show, :create]
 end

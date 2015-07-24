@@ -22,8 +22,6 @@ class SecureController < ApplicationController
     end
   end
 
-  private
-
   def request_signature
     @request_signature ||= begin
       kb_signature = request.headers['X-Kb-Signature'] or raise(ArgumentError, 'X-Kb-Signature header expected')

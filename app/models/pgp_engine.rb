@@ -14,6 +14,10 @@ module PgpEngine
     end
   end
 
+  def decrypt_team(signed_team, public_key)
+    process_with_key('--decrypt', '2>/dev/null', signed_team, public_key)
+  end
+
   private
 
   def extract_timestamp(output)

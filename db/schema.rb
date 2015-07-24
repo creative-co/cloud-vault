@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150329144337) do
     t.integer  "version_number",    null: false
     t.integer  "author_id",         null: false
     t.text     "encrypted_content", null: false
-    t.text     "team",              null: false
+    t.text     "team",            on  null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

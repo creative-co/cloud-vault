@@ -11,12 +11,14 @@ class RequestSignature
   end
 
   def validate!
-    # this will fetch the public key from Keybase.io unless already ached
-    public_key = PublicKeysCache.fetch(@kb_login)
     sig = PgpEngine.verify(@signature, public_key)
     raise Invalid unless sig.valid?
     @timestamp = sig.timestamp
     @csrf_token = sig.content.strip
   end
 
+  def public_key
+    # this will fetch the public key from Keybase.io unless already ached
+    PublicKeysCache.fetch(@kb_login)
+  end
 end
