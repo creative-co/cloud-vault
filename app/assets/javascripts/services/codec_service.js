@@ -29,7 +29,7 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
           return KeyManagerService.pgpEncryptForKey(proj.passphrase, memberKey)
         })
         .then(function (encryptedPassphrase) {
-          proj.passphrases << {kb_login: member.kbLogin, phrase: encryptedPassphrase};
+          proj.passphrases.push({kb_login: member.kbLogin, phrase: encryptedPassphrase});
         });
     });
     return $q.all(promises).then(function () {

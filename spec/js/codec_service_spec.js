@@ -17,6 +17,7 @@ describe("CodecService", function () {
         expect(error).toBeUndefined();
         expect(value.encrypted_content.length).toBeGreaterThan(100);
         expect(value.signed_team.length).toBeGreaterThan(100);
+        expect(value.passphrases.length).toEqual(1);
       })
     });
   });
