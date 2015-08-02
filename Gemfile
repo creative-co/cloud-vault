@@ -1,4 +1,3 @@
-
 ruby '2.2.1'
 source 'https://rubygems.org'
 
@@ -30,7 +29,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
-  gem 'rails-assets-jsSHA'
+  gem 'rails-assets-jsSHA', '~> 1.6'
   gem 'rails-assets-js-base64'
   gem 'rails-assets-maxtaco--purepack'
 end
@@ -57,6 +56,8 @@ gem 'rest-client'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :deelopment
 gem 'rails_12factor', group: :production
+gem 'symbolized'
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

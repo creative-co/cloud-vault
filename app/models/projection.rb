@@ -9,7 +9,8 @@ class Projection
   include ActiveModel
   extend ActiveModel::Naming
 
-  delegate :title, :version_number, to: :@project
+  delegate :persisted?, :title, :version_number, to: :@project
+  delegate :id, to: :@project, prefix: :project # defines project_id
   delegate :encrypted_content, :team, to: :@version
 
   def initialize(project_id, user)
@@ -30,15 +31,12 @@ class Projection
     self
   end
 
-  def persisted?
-    @project.persisted?
-  end
-
   alias :read_attribute_for_serialization :send # to play with ActiveModelSerializers
 
   class << self
     def create!(attributes, author)
-      raise ArbumentError, 'Blank passphrases provided' if attributes[:passphrases].blank?
+      attributes = attributes.to_symbolized_hash
+      passphrases = attributes.fetch(:passphrases)
 
       project = Project.create(title: attributes.fetch(:title), version_number: 1)
       project_version = project.project_versions.create!(
@@ -46,20 +44,13 @@ class Projection
           encrypted_content: attributes.fetch(:encrypted_content), # <-- the secret information is here
           team: attributes.fetch(:signed_team)
       )
-      attributes.fetch(:passphrases).each do |kb_login, passphrase|
+      passphrases.each do |kb_login:, phrase:|
         user = User.first_or_create!(kb_login: kb_login)
-        project_version.passphrases.create!(user: user, phrase: passphrase)
+        project_version.passphrases.create!(user: user, phrase: phrase)
       end
 
       Projection.new(project.id, author)
     end
-
-    # private
-    # def self.decode_team(signed_team, author)
-    #   author_public_key = PublicKeysCache.fetch(author.kb_login)
-    #   decoded = PgpEngine.decrypt_team(signed_team, author_public_key)
-    #   decoded.each_line.to_a.map(&:chomp)
-    # end
   end
 end
 
@@ -70,3 +61,12 @@ end
 # find author user
 # create project_version
 # create passphrase for each of the users
+
+
+# GARBAGE
+# def self.decode_team(signed_team, author)
+#   author_public_key = PublicKeysCache.fetch(author.kb_login)
+#   decoded = PgpEngine.decrypt_team(signed_team, author_public_key)
+#   decoded.each_line.to_a.map(&:chomp)
+# end
+

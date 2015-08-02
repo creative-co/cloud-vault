@@ -22,14 +22,14 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
   }
 
   function encryptPassphrase(proj) {
-    proj.passphrases = {};
-    var promises = _.map(proj.team, function (memberKbLogin) {
-      return fetchPublicKeyFor(memberKbLogin)
+    proj.passphrases = [];
+    var promises = _.map(proj.team, function (member) {
+      return fetchPublicKeyFor(member.kbLogin)
         .then(function (memberKey) {
           return KeyManagerService.pgpEncryptForKey(proj.passphrase, memberKey)
         })
         .then(function (encryptedPassphrase) {
-          proj.passphrases[memberKbLogin] = encryptedPassphrase;
+          proj.passphrases << {kb_login: member.kbLogin, phrase: encryptedPassphrase};
         });
     });
     return $q.all(promises).then(function () {
@@ -39,7 +39,10 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
   }
 
   function signTeam(proj) {
-    var teamStr = proj.team.join("\n");
+    var teamStr = proj.team.map(function (x) {
+      return x.kbLogin
+    }).join("\n");
+
     return KeyManagerService.pgpSign(teamStr).then(function (signedMsg) {
       proj.signedTeam = signedMsg;
       return proj;

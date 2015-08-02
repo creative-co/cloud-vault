@@ -1,10 +1,10 @@
-angular.module('vault').controller('ProjectionCtrl', function ($routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
+angular.module('vault').controller('ProjectionCtrl', function ($location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
   var self = this;
 
   if ($routeParams.projectionId == 'new') {
     self.projection = ProjectionFactory({
       title: 'New Project',
-      team: [LoginService.kbLogin()]
+      team: [{kbLogin: LoginService.kbLogin(), name: 'INKOGNITO'}]
     });
   } else {
     // TODO: progress indication
@@ -14,7 +14,8 @@ angular.module('vault').controller('ProjectionCtrl', function ($routeParams, Bac
 
   this.onCreateBtnClicked = function () {
     return CodecService.encrypt(self.projection)
-      .then(BackendService.createProjection);
+      .then(BackendService.createProjection)
+      .then(navigateToUpdatedSummaries)
   }
 
   // REFACTOR
@@ -22,4 +23,9 @@ angular.module('vault').controller('ProjectionCtrl', function ($routeParams, Bac
     e.preventDefault();
     $(this).tab('show');
   })
+
+  function navigateToUpdatedSummaries() {
+    $location.path("/summaries");
+    $rootScope.$broadcast('reloadSummaries');
+  }
 });

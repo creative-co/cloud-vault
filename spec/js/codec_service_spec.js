@@ -8,7 +8,10 @@ describe("CodecService", function () {
       var promise = my.initKeyManager()
         .then(function () {
           return my.CodecService.encrypt(projection)
-        });
+        })
+        .catch(function(x) {
+          console.log('ERROR', x);
+        })
 
       my.waitsForPromise(promise, function (value, error) {
         expect(error).toBeUndefined();

@@ -9,11 +9,15 @@ class ProjectionsController < SecureController
     respond_with Projection.create!(projection_params, current_user)
   end
 
+  def update
+    respond_with Projection.create!(projection_params, current_user)
+  end
+
   private
 
   def projection_params
-    p = params.require(:projection)
-    p.permit(:title, :signed_team, :encrypted_content).merge(passphrases: p[:passphrases].permit!)
+    params.require(:projection)
+        .permit(:title, :signed_team, :encrypted_content, passphrases: [:kb_login, :phrase])
   end
 
 end

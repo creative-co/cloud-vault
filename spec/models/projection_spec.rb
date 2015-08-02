@@ -21,7 +21,7 @@ describe Projection do
   end
 
   describe 'creating a new one' do
-    let(:attributes) { {title: 'Hello World', signed_team: SpecMacros::SIGNED_TEAM, encrypted_content: '1234567', passphrases: {vovayartsev: 'some-passphrase30G'}} }
+    let(:attributes) { {title: 'Hello World', signed_team: SpecMacros::SIGNED_TEAM, encrypted_content: '1234567', passphrases: [{kb_login: 'vovayartsev', phrase: 'some-passphrase30G'}]} }
     let(:author) { User.create!(kb_login: 'vovayartsev') }
     it 'should populate DB' do
       projection = Projection.create!(attributes, author)

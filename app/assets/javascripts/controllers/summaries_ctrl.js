@@ -1,7 +1,12 @@
-angular.module('vault').controller('SummariesCtrl', function (BackendService) {
+angular.module('vault').controller('SummariesCtrl', function ($scope, BackendService) {
   var self = this;
+  reloadSummaries();
 
-  BackendService.summaries().success(function (data) {
-    self.summaries = data.summaries;
-  })
+  $scope.$on('reloadSummaries', reloadSummaries);
+
+  function reloadSummaries() {
+    BackendService.summaries().success(function (data) {
+      self.summaries = data.summaries;
+    })
+  }
 });

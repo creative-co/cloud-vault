@@ -4,6 +4,6 @@ FIXTURES = {
   demo_projection: {
     title: 'Demo Projection',
     decryptedContent: 'Secret',
-    team: ['vovayartsev']
+    team: [{kbLogin: 'vovayartsev', name: 'Vladimir Yartsev'}]
   }
 };

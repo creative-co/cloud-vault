@@ -18,8 +18,8 @@
       .tab-content
         .tab-pane.active#tab1 role="tabpanel"
           textarea.form-control name="" cols="30" rows="10"
-        .tab-pane#tab2 role="tabpanel"
 
+        .tab-pane#tab2 role="tabpanel"
           .input-group
             input.form-control type="text" placeholder="User name, email, github..."
             span.input-group-btn
@@ -28,15 +28,10 @@
           br
 
           ul.list-group
-            li.list-group-item
-              |Anton frolovsky
+            li.list-group-item(ng-repeat="member in projectionCtrl.projection.team")
+              | {{ member.name }}
               button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
-            li.list-group-item
-              |Vladimir Yartsev
-              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
-            li.list-group-item
-              |Vasia Vasia
-              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
+
         .tab-pane#tab3 role="tabpanel" History log here!
 
   .panel-footer.text-center
