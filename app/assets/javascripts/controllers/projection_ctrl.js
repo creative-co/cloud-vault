@@ -1,4 +1,4 @@
-angular.module('vault').controller('ProjectionCtrl', function ($location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
+angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
   var self = this;
 
   if ($routeParams.projectionId == 'new') {
@@ -7,9 +7,14 @@ angular.module('vault').controller('ProjectionCtrl', function ($location, $rootS
       team: [{kbLogin: LoginService.kbLogin(), name: 'INKOGNITO'}]
     });
   } else {
+    BackendService.loadProjection($routeParams.projectionId)
+      .then(function (response) {
+        return CodecService.decrypt(response.data.projection);
+      })
+      .then(function (projection) {
+        self.projection = ProjectionFactory(projection);
+      });
     // TODO: progress indication
-    // TODO: load
-    // then CodecService.decrypt(self.projection);
   }
 
   this.onCreateBtnClicked = function () {

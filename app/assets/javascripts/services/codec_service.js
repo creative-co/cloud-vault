@@ -5,8 +5,13 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
       .then(encryptPassphrase)
       .then(signTeam)
       .then(parameterizeAndSanitize);
-  }
+  };
 
+  this.decrypt = function (projection) {
+    return $q.when(projection)
+      .then(decryptPassphrase)
+      .then(decryptContent);
+  };
 
   /* PRIVATE */
 
@@ -19,6 +24,14 @@ angular.module('vault').service('CodecService', function ($q, $http, KeyManagerS
         proj.encryptedContent = encrypted;
         return proj;
       });
+  }
+
+  function decryptContent(proj) {
+
+  }
+
+  function decryptPassphrase(proj) {
+
   }
 
   function encryptPassphrase(proj) {

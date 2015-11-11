@@ -2,7 +2,7 @@ div
   ul.list-unstyled
     li.summary ng-repeat="summary in summariesCtrl.summaries"
       .summary_favorite
-      .summary_title ng-bind="summary.title" ng-click="summariesCtrl.showProjection(summary.project_id)"
+      a.summary_title ng-bind="summary.title" ng-href="#/projections/{{summary.project_id}}"
       .summary_info.glyphicon-time ng-bind="summary.last_changed_at"
       .summary_info.glyphicon-user ng-bind="summary.team_size"
 
