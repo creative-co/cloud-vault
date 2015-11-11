@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   post 'keybase_proxy/getsalt'
   post 'keybase_proxy/login'
+  get 'keybase_proxy/user_autocomplete'
   # post 'keybase_proxy/key_fetch'
 
   resources :summaries, only: [:index]
