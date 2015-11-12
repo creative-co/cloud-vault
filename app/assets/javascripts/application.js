@@ -20,6 +20,8 @@
 
 //= require angular
 //= require angular-route
+//= require angular-ui-select
+//= require angular-sanitize
 //= require angular-app
 //= require_tree ./factories
 //= require_tree ./services

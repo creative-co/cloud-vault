@@ -1,4 +1,4 @@
-angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
+angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService, KeybaseUserAutocompleteService) {
   var self = this;
 
   if ($routeParams.projectionId == 'new') {
@@ -33,4 +33,26 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
     $location.path("/summaries");
     $rootScope.$broadcast('reloadSummaries');
   }
+
+  $scope.userSuggestions = [];
+  $scope.isLoadingUserSuggestions = false;
+  $scope.refreshUserSuggestions = function(query) {
+    if (_.isEmpty(query)) {
+      $scope.userSuggestions = [];
+    }
+    else {
+      $scope.isLoadingUserSuggestions = true;
+      KeybaseUserAutocompleteService.search(query).then(function(suggestions) {
+        $scope.isLoadingUserSuggestions = false;
+        $scope.userSuggestions = suggestions;
+      });
+    }
+  };
+
+  $scope.onSelectUser = function(user) {
+    self.projection.team.push({
+      kbLogin: user.username,
+      name: user.name || user.username
+    });
+  };
 });

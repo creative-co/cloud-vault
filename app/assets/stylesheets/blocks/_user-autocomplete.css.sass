@@ -1,0 +1,48 @@
+.keybase-user-autocomplete
+  position: relative
+  .kua-spinner
+    @extend .fa-pulse
+    position: absolute
+    top: 50%
+    left: -$font-size-base - 4px
+    z-index: 1200
+    margin-top: -.5 * $font-size-base
+    line-height: $font-size-base
+    font-size: $font-size-base
+    &.invisible  // need for load icon font
+      left: -9999px
+      opacity: 0
+  .ui-select-choices-row
+    border-bottom: 1px solid $legend-border-color
+    &:last-child
+      border-bottom: 0
+  .kua-suggestion-item
+    display: inline-block
+    padding-right: 0
+    padding-left: 10px
+    &:first-child
+      padding-left: 0
+    &.thumb img
+      @extend .img-circle
+      @include square(20px)
+    @mixin kua-item-icon()
+      @include fa-icon()
+      padding-right: 3px
+    &.github:before
+      @include kua-item-icon()
+      content: $fa-var-github
+    &.reddit:before
+      @include kua-item-icon()
+      content: $fa-var-reddit
+    &.twitter:before
+      @include kua-item-icon()
+      content: $fa-var-twitter
+    &.coinbase:before
+      @include kua-item-icon()
+      content: $fa-var-bitcoin
+    &.hackernews:before
+      @include kua-item-icon()
+      content: $fa-var-hacker-news
+    &.key_fingerprint:before
+      @include kua-item-icon()
+      content: $fa-var-key

@@ -26,6 +26,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
   gem 'rails-assets-angular-route'
   gem 'rails-assets-angular-mocks'
+  gem 'rails-assets-angular-ui-select'
+  gem 'rails-assets-angular-sanitize' # need for angular-ui-select
   gem 'rails-assets-jquery'
   gem 'rails-assets-kbpgp'
   gem 'rails-assets-underscore'
@@ -35,6 +37,7 @@ source 'https://rails-assets.org' do
 end
 
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'autoprefixer-rails'
 gem 'ngannotate-rails', github: 'kikonen/ngannotate-rails'
 gem 'responders', '~> 2.0'
@@ -71,4 +74,3 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-its'
 end
-
