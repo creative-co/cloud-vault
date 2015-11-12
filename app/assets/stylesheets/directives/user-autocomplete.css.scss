@@ -1,0 +1,88 @@
+.keybase-user-autocomplete {
+  position: relative;
+
+  .kua-dropdown-menu {
+    @include box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: auto;
+    left: 0;
+    z-index: $zindex-dropdown;
+    border: 1px solid $dropdown-border;
+    border-radius: $border-radius-base;
+    background-color: $dropdown-bg;
+    padding: 5px 0;
+    min-width: 160px;
+    text-align: left;
+    font-size: $font-size-base;
+  }
+
+  .kua-suggestions {
+    min-width: 700px;
+  }
+
+  .kua-suggestion {
+    border-bottom: 1px solid $legend-border-color;
+    cursor: pointer;
+    padding: 2px 10px;
+
+    &:hover {
+      background-color: $dropdown-link-hover-bg;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .kua-item {
+    display: inline-block;
+    padding-right: 0;
+    padding-left: 10px;
+    color: $text-muted;
+
+    &.matched {
+      color: $brand-info;
+
+      .highlighted {
+        color: $brand-warning;
+      }
+    }
+
+    &.thumb img {
+      @extend .img-circle;
+      @include square(20px);
+    }
+
+    @mixin kua-item-icon() {
+      @include fa-icon();
+      padding-right: 3px;
+    }
+
+    &.github:before {
+      @include kua-item-icon();
+      content: $fa-var-github;
+    }
+
+    &.reddit:before {
+      @include kua-item-icon();
+      content: $fa-var-reddit;
+    }
+
+    &.twitter:before {
+      @include kua-item-icon();
+      content: $fa-var-twitter;
+    }
+
+    &.coinbase:before {
+      @include kua-item-icon();
+      content: $fa-var-bitcoin;
+    }
+
+    &.hacker-news:before {
+      @include kua-item-icon();
+      content: $fa-var-hacker-news;
+    }
+  }
+}
