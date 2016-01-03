@@ -1,4 +1,4 @@
-var app = angular.module('vault', ['ngRoute']);
+var app = angular.module('vault', ['ngRoute', 'ui.select', 'ngSanitize']);
 
 app
   .config(function($routeProvider) {

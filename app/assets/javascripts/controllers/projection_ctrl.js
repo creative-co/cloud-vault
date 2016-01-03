@@ -23,6 +23,11 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
       .then(navigateToUpdatedSummaries)
   }
 
+  this.addTeamMember = function (member) {
+    debugger
+    self.projection.team.push(member);
+  }
+
   // REFACTOR
   $('.nav-tabs .nav-tabs-link').click(function (e) {
     e.preventDefault();
@@ -33,4 +38,5 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
     $location.path("/summaries");
     $rootScope.$broadcast('reloadSummaries');
   }
+
 });

@@ -20,17 +20,7 @@
           textarea.form-control name="" cols="30" rows="10"
 
         .tab-pane#tab2 role="tabpanel"
-          .input-group
-            input.form-control type="text" placeholder="User name, email, github..."
-            span.input-group-btn
-              button.btn.btn-default type="button" Add user
-
-          br
-
-          ul.list-group
-            li.list-group-item(ng-repeat="member in projectionCtrl.projection.team")
-              | {{ member.name }}
-              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
+          = render 'static_pages/vault/projection/team'
 
         .tab-pane#tab3 role="tabpanel" History log here!
 
