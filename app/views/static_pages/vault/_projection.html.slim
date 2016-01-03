@@ -20,34 +20,7 @@
           textarea.form-control name="" cols="30" rows="10"
 
         .tab-pane#tab2 role="tabpanel"
-          .keybase-user-autocomplete
-            .kua-spinner ng-class='{invisible: !isLoadingUserSuggestions}' = icon('spinner')
-            ui-select ng-model='selectedUserSuggestion' on-select="onSelectUser($item)"
-              ui-select-match placeholder='Username, e-mail, github..'
-                | {{ $select.selected.username }}
-              ui-select-choices (
-                repeat='user in userSuggestions'
-                refresh='refreshUserSuggestions($select.search)'
-                refresh-delay=500
-              )
-                .kua-suggestion-item.thumb
-                  img ng-src='{{user.thumbnail}}' width=200 height=200
-                .kua-suggestion-item (
-                  ng-repeat='component in user.components'
-                  ng-class='component.field'
-                  ng-bind-html='component.val | highlight: $select.search'
-                )
-                .kua-suggestion-item.website (
-                  ng-repeat='component in user.websites'
-                  ng-bind-html='component | highlight: $select.search'
-                )
-
-          br
-
-          ul.list-group
-            li.list-group-item(ng-repeat="member in projectionCtrl.projection.team")
-              | {{ member.name }}
-              button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"
+          = render 'static_pages/vault/projection/team'
 
         .tab-pane#tab3 role="tabpanel" History log here!
 

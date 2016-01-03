@@ -1,4 +1,4 @@
-angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService, KeybaseUserAutocompleteService) {
+angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
   var self = this;
 
   if ($routeParams.projectionId == 'new') {
@@ -23,6 +23,11 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
       .then(navigateToUpdatedSummaries)
   }
 
+  this.addTeamMember = function (member) {
+    debugger
+    self.projection.team.push(member);
+  }
+
   // REFACTOR
   $('.nav-tabs .nav-tabs-link').click(function (e) {
     e.preventDefault();
@@ -34,25 +39,4 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
     $rootScope.$broadcast('reloadSummaries');
   }
 
-  $scope.userSuggestions = [];
-  $scope.isLoadingUserSuggestions = false;
-  $scope.refreshUserSuggestions = function(query) {
-    if (_.isEmpty(query)) {
-      $scope.userSuggestions = [];
-    }
-    else {
-      $scope.isLoadingUserSuggestions = true;
-      KeybaseUserAutocompleteService.search(query).then(function(suggestions) {
-        $scope.isLoadingUserSuggestions = false;
-        $scope.userSuggestions = suggestions;
-      });
-    }
-  };
-
-  $scope.onSelectUser = function(user) {
-    self.projection.team.push({
-      kbLogin: user.username,
-      name: user.name || user.username
-    });
-  };
 });
