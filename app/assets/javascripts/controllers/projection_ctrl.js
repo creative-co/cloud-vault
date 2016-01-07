@@ -1,20 +1,24 @@
-angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService) {
+angular.module('vault').controller('ProjectionCtrl', function ($scope, $location, $rootScope, $routeParams, BackendService, ProjectionFactory, CodecService, LoginService, KeybaseUserLookupService) {
   var self = this;
 
-  if ($routeParams.projectionId == 'new') {
-    self.projection = ProjectionFactory({
-      title: 'New Project',
-      team: [{kbLogin: LoginService.kbLogin(), name: LoginService.fullNameAndEmail()}]
-    });
-  } else {
-    BackendService.loadProjection($routeParams.projectionId)
-      .then(function (response) {
-        return CodecService.decrypt(response.data.projection);
-      })
-      .then(function (projection) {
-        self.projection = ProjectionFactory(projection);
+  // initializer is executed after all this.xxx variables are set
+  function initialize() {
+    if ($routeParams.projectionId == 'new') {
+      self.projection = ProjectionFactory({
+        title: 'New Project',
+        team: []
       });
-    // TODO: progress indication
+      self.addTeamMember(LoginService.kbLogin());
+    } else {
+      BackendService.loadProjection($routeParams.projectionId)
+        .then(function (response) {
+          return CodecService.decrypt(response.data.projection);
+        })
+        .then(function (projection) {
+          self.projection = ProjectionFactory(projection);
+        });
+      // TODO: progress indication
+    }
   }
 
   this.onCreateBtnClicked = function () {
@@ -23,8 +27,8 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
       .then(navigateToUpdatedSummaries)
   }
 
-  this.addTeamMember = function (member) {
-    debugger
+  this.addTeamMember = function (username) {
+    var member = KeybaseUserLookupService.lookup(username);
     self.projection.team.push(member);
   }
 
@@ -39,4 +43,5 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
     $rootScope.$broadcast('reloadSummaries');
   }
 
+  initialize();
 });

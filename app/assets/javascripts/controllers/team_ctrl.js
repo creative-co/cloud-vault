@@ -14,10 +14,7 @@ angular.module('vault').controller('TeamCtrl', function ($scope, KeybaseUserAuto
   };
 
   $scope.onSelectUser = function (user) {
-    $scope.projectionCtrl.addTeamMember({
-      kbLogin: user.username,
-      name: user.name || user.username
-    });
+    $scope.projectionCtrl.addTeamMember(user.username);
   };
 
 });

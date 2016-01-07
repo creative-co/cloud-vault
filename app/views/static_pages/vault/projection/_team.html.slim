@@ -25,5 +25,7 @@ div(ng-controller="TeamCtrl")
 
     ul.list-group
       li.list-group-item(ng-repeat="member in projectionCtrl.projection.team")
-        | {{ member.name }}
+        img ng-src='{{member.avatarUrl}}' width=26 height=26
+        | {{ member.fullName }}
+        a<> ng-bind="member.kbLogin" ng-href="https://keybase.io/{{member.kbLogin}}" target="_blank"
         button.glypicon-button.pull-right.glyphicon.glyphicon-remove type="button"

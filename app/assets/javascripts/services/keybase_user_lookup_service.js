@@ -10,13 +10,14 @@ angular.module('vault').service('KeybaseUserLookupService', function ($http) {
     return future;
   };
 
-  function doLookupQuery(kbLogin, future) {
+  function doLookupQuery(kbLogin) {
     var future = {
       kbLogin: kbLogin
     };
 
     future.promise = $http.get(USER_LOOKUP_URL, {
-      params: {fields: "pictures,profile", usernames: kbLogin}
+      params: {fields: "pictures,profile", usernames: kbLogin},
+      headers: {'X-Csrf-Token': undefined, 'X-Requested-With': undefined}
     }).then(function (response) {
       var info = response.data.them[0];
       future.fullName = info.profile.full_name;
