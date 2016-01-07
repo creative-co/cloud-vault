@@ -34,6 +34,10 @@ angular.module('vault').service('LoginService', function ($rootScope, $q, $timeo
       return me && me.basics.username;
     }
 
+    this.fullNameAndEmail = function () {
+      return me && (me.profile.full_name + " (" + me.emails.primary.email + ")");
+    }
+
     /* PRIVATE */
 
     function buildRequestSignature() {
