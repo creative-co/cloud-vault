@@ -4,7 +4,7 @@ angular.module('vault').controller('ProjectionCtrl', function ($scope, $location
   if ($routeParams.projectionId == 'new') {
     self.projection = ProjectionFactory({
       title: 'New Project',
-      team: [{kbLogin: LoginService.kbLogin(), name: 'INKOGNITO'}]
+      team: [{kbLogin: LoginService.kbLogin(), name: LoginService.fullNameAndEmail()}]
     });
   } else {
     BackendService.loadProjection($routeParams.projectionId)
