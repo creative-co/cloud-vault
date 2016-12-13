@@ -43,7 +43,7 @@ angular.module('vault').service('KeybaseLoginService', function ($q, $http) {
   }
 
   function getSalt(kbLogin) {
-    return toPromise($http.post(GETSALT_URL, {kb: {email_or_username: kbLogin}}))
+    return toPromise($http.post(GETSALT_URL, {kb: {email_or_username: kbLogin, pdpka_login: true}}))
   }
 
   function doLogin(params) {

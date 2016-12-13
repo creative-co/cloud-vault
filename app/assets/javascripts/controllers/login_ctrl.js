@@ -19,4 +19,3 @@ angular.module('vault').controller('LoginCtrl', function ($rootScope, $location,
       })
   }
 });
-
