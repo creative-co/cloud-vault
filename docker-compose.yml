@@ -1,0 +1,29 @@
+web:
+  build: .
+  volumes:
+    - .:/app
+    - ~/.ssh:/root/.ssh
+  ports:
+    - 3000:3000
+  links:
+    - db
+  command: /bin/bash -c 'bundle check || bundle install && bundle exec rails server -b "0.0.0.0" -p 3000'
+  environment: &environment
+    DATABASE_HOST: db
+
+    POSTGRES_USER: cloud_vault
+    POSTGRES_PASSWORD:
+
+    BUNDLE_PATH: /bundle_cache
+  volumes_from:
+    - bundle_cache
+
+db:
+  image: postgres:9.6.5
+  environment:
+    <<: *environment
+
+bundle_cache:
+  image: busybox
+  volumes:
+    - /bundle_cache
